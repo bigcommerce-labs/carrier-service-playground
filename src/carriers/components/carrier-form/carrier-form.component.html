@@ -1,0 +1,60 @@
+<div class="carrier-form">
+    <h1>Update Carrier: {{ carrierName }}</h1>
+    <form [formGroup]="form">
+
+        <div class="form-field">
+            <label class="form-label">Name</label>
+            <input
+                class="form-input"
+                type="text"
+                formControlName="name"
+                placeholder="Name of Carrier">
+            <div class="error"
+                *ngIf="form.get('name').hasError('required') && form.get('name').touched">
+                Meal name is required
+            </div>
+        </div>
+
+        <div class="form-field">
+            <label class="form-label">Description</label>
+            <input
+                class="form-input"
+                type="text"
+                formControlName="description"
+                placeholder="Carrier Description">
+            <div class="error"
+                *ngIf="form.get('description').hasError('required') && form.get('description').touched">
+                Description is required
+            </div>
+        </div>
+
+        <div class="form-field">
+            <label class="form-label">Logo URL</label>
+            <input
+                class="form-input"
+                type="text"
+                formControlName="logo_url"
+                placeholder="Carrier Logo">
+        </div>
+
+        <div class="form-field">
+            <label class="form-label">Public</label>
+            <input
+                class="form-checkbox"
+                type="checkbox"
+                formControlName="is_public">
+        </div>
+
+        <div class="form-actions">
+            <button class="form-button"
+                (click)="updateCarrier()">
+                    Save
+            </button>
+
+            <button class="form-button"
+                (click)="cancel()">
+                    Cancel
+            </button>
+        </div>
+    </form>
+</div>

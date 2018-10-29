@@ -1,6 +1,25 @@
-<div class="carriers">
-    <li class="carrier"
-        *ngFor="let carrier of (carriers | async)">
-        {{ carrier | json }}
+<div class="carriers"
+    *ngIf="carriers | async as carrierList; else loading;">
+    <h1>List of Carriers</h1>
+
+    <li class="carrier layout-column"
+        *ngFor="let carrier of carrierList">
+
+        <div class="layout-row align-items-center">
+            <div class="carrier-detail">{{ carrier.name }}</div>
+            <button class="button"
+            (click)="displayCarrierForm(carrier)">
+                Edit
+            </button>
+        </div>
+
+        <app-carrier-form *ngIf="displayFormForCarrier === carrier.id"
+            [carrier]="carrier"
+            (hideForm)="resetCarrierForm()"
+            (update)="updateCarrier($event)"></app-carrier-form>
     </li>
 </div>
+
+<ng-template #loading>
+    <b>Loading Carriers</b>
+</ng-template>

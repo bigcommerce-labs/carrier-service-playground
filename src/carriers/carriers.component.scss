@@ -1,0 +1,35 @@
+.carriers {
+
+    .layout-column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .layout-row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .align-items-center {
+        align-items: center;
+    }
+    
+    .carrier {
+        padding: 10px;
+
+        .carrier-detail {
+            width: 200px;
+            text-align: start;
+        }
+
+        .button {
+            background: #4b71fc;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+            min-height: 38px;
+            min-width: 5.3333rem;
+            padding: 5px 10px;
+        }
+    }
+}

@@ -17,4 +17,12 @@ export class CarriersService {
             map((res: any) => res.data)
         );
     }
+
+    updateCarrier(id: number, payload: any) {
+        return this.http.put(
+            `${this.API_URL}/${id}`, payload)
+            .pipe(
+                map((res: any) => res)
+            );
+    }
 }
