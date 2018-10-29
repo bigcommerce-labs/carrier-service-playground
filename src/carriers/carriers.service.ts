@@ -5,7 +5,7 @@ import { map } from "rxjs/operators";
 
 @Injectable()
 export class CarriersService {
-    private API_URL:string = '/api';
+    private API_URL = '/api';
 
     constructor(
         private http: HttpClient
@@ -15,6 +15,6 @@ export class CarriersService {
         return this.http.get(this.API_URL)
         .pipe(
             map((res: any) => res.data)
-        )
-    } 
+        );
+    }
 }

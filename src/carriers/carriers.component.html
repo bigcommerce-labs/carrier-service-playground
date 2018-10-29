@@ -1,4 +1,6 @@
-<div
-    *ngFor="let carrier of (carriers | async)">
-    {{ carrier | json }}
+<div class="carriers">
+    <li class="carrier"
+        *ngFor="let carrier of (carriers | async)">
+        {{ carrier | json }}
+    </li>
 </div>
