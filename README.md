@@ -1,5 +1,9 @@
 # CarrierService
 
+This is an app for the team internally, so we can modify test carriers from a UI compared to the postman approach which can be confusing.
+
+This moment is built in angular at the moment. With a plan to move it to react in due time or deprecate it once account center rolls out the developer portal for Carrier Service.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
 
 ## Development server
