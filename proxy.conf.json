@@ -1,0 +1,10 @@
+{
+    "/api": {
+        "target": "http://workstation:4000/carrierService/carriers",
+        "secure": false,
+        "pathRewrite": {
+        "^/api": ""
+        },
+        "logLevel": "debug"
+    }
+}
