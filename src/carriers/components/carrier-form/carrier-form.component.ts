@@ -44,6 +44,8 @@ export class CarrierFormComponent implements OnChanges {
     ) {}
 
     updateCarrier() {
+        console.log(this.form.value);
+        return;
         const payload = this.form.value;
         payload.app_id = this.APP_ID;
         this.update.emit({

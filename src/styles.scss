@@ -8,3 +8,13 @@ body {
     font-size: 1rem;
     letter-spacing: 0.5px;
 }
+
+.layout-row {
+    display: flex;
+    flex-direction: row;
+}
+
+
+:focus {
+    outline: none;
+}
