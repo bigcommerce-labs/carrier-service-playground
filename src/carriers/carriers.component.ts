@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 
 export class CarriersComponent implements OnInit {
-    carriers: Observable<any>;
+    carriers: any[];
     displayFormForCarrier: string;
 
     constructor(
@@ -17,7 +17,10 @@ export class CarriersComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.carriers = this.carrierService.getCarriers();
+        this.carrierService.getCarriers()
+            .subscribe(res => {
+                this.carriers = res;
+            });
     }
 
     displayCarrierForm(carrier: any) {
@@ -33,7 +36,11 @@ export class CarriersComponent implements OnInit {
         this.carrierService.updateCarrier(id, payload)
             .subscribe(res => {
                 this.resetCarrierForm();
-                this.carriers = this.carrierService.getCarriers();
+                Object.assign(
+                    this.carriers[this.carriers.findIndex(
+                        carrier => carrier.id === res.id)],
+                    res
+                );
             });
     }
 }

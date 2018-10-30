@@ -11,7 +11,7 @@ export class CarriersService {
         private http: HttpClient
     ) {}
 
-    getCarriers(): Observable<any> {
+    getCarriers(): Observable<any[]> {
         return this.http.get(this.API_URL)
         .pipe(
             map((res: any) => res.data)

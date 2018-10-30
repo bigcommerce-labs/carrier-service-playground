@@ -21,15 +21,31 @@
             width: 200px;
             text-align: start;
         }
+    }
+}
 
-        .button {
-            background: #4b71fc;
-            color: white;
-            cursor: pointer;
-            margin-left: 10px;
-            min-height: 38px;
-            min-width: 5.3333rem;
-            padding: 5px 10px;
-        }
+.button {
+    background: white;
+    border: 1px solid #4b71fc;
+    color: #4b71fc;
+    cursor: pointer;
+    margin-left: 10px;
+    min-height: 38px;
+    min-width: 5.3333rem;
+    padding: 5px 10px;
+
+    &.primary {
+        background: #4b71fc;
+        color: white; 
+    }
+
+    &.add-new {
+        margin-top: 20px;
+    }
+
+    &:disabled {
+        background-color: #e9eaea;
+        border-color: #e9eaea;
+        color: #bdc0c0;
     }
 }

@@ -1,5 +1,5 @@
 <div class="carriers"
-    *ngIf="carriers | async as carrierList; else loading;">
+    *ngIf="carriers as carrierList; else loading;">
     <h1>List of Carriers</h1>
 
     <li class="carrier layout-column"
@@ -7,8 +7,9 @@
 
         <div class="layout-row align-items-center">
             <div class="carrier-detail">{{ carrier.name }}</div>
-            <button class="button"
-            (click)="displayCarrierForm(carrier)">
+            <button class="button primary"
+                [disabled]="displayFormForCarrier === carrier.id"
+                (click)="displayCarrierForm(carrier)">
                 Edit
             </button>
         </div>
@@ -16,9 +17,14 @@
         <app-carrier-form *ngIf="displayFormForCarrier === carrier.id"
             [carrier]="carrier"
             (hideForm)="resetCarrierForm()"
-            (update)="updateCarrier($event)"></app-carrier-form>
+            (update)="updateCarrier($event)">
+        </app-carrier-form>
     </li>
 </div>
+
+<button class="button add-new">
+    + Add New Carrier
+</button>
 
 <ng-template #loading>
     <b>Loading Carriers</b>
