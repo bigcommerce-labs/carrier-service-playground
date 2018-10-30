@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { logoUrlMatcher } from './logo-url.validator';
 
 @Component({
     selector: 'app-carrier-form',
@@ -28,7 +29,7 @@ export class CarrierFormComponent implements OnChanges {
         name: ['', Validators.required],
         description: ['', Validators.required],
         is_public: [false],
-        logo_url: ['']
+        logo_url: ['', [Validators.required, logoUrlMatcher]]
     });
 
     ngOnChanges(changes: SimpleChanges) {
@@ -44,8 +45,6 @@ export class CarrierFormComponent implements OnChanges {
     ) {}
 
     updateCarrier() {
-        console.log(this.form.value);
-        return;
         const payload = this.form.value;
         payload.app_id = this.APP_ID;
         this.update.emit({

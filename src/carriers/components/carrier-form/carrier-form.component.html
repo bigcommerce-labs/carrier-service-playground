@@ -35,16 +35,22 @@
                 type="text"
                 formControlName="logo_url"
                 placeholder="Carrier Logo">
+            <div class="error"
+                *ngIf="form.get('logo_url').hasError('required') && form.get('logo_url').touched">
+                Description is required
+            </div>
+            <div class="error"
+                *ngIf="this.form.get('logo_url').hasError('invalidUrl') && form.get('logo_url').touched">
+                Invalid URL
+            </div>
         </div>
 
         <div class="form-field has-checkbox">
             <label class="form-label">Public</label>
-            <!-- <div class="form-checkbox-container"> -->
-                <input
-                    class="form-checkbox"
-                    type="checkbox"
-                    formControlName="is_public">
-            <!-- </div> -->
+            <input
+                class="form-checkbox"
+                type="checkbox"
+                formControlName="is_public">
         </div>
 
         <div class="form-actions">
