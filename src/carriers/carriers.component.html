@@ -1,31 +1,45 @@
-<div class="carriers"
-    *ngIf="carriers as carrierList; else loading;">
-    <h1>List of Carriers</h1>
+<div *ngIf="!hidePage">
+    <h1>Carrier Portal</h1>
+    <button
+        (click)="toggleAddNewForm()"
+        class="button add-new">
+        + Add New Carrier
+    </button>
 
-    <li class="carrier layout-column"
-        *ngFor="let carrier of carrierList">
+    <div class="carriers"
+        *ngIf="carriers as carrierList; else loading;">
 
-        <div class="layout-row align-items-center">
-            <div class="carrier-detail">{{ carrier.name }}</div>
-            <button class="button primary"
-                [disabled]="displayFormForCarrier === carrier.id"
-                (click)="displayCarrierForm(carrier)">
-                Edit
-            </button>
-        </div>
+        <li class="carrier layout-column"
+            *ngFor="let carrier of carrierList">
 
-        <app-carrier-form *ngIf="displayFormForCarrier === carrier.id"
-            [carrier]="carrier"
-            (hideForm)="resetCarrierForm()"
-            (update)="updateCarrier($event)">
-        </app-carrier-form>
-    </li>
+            <div class="layout-row align-items-center">
+                <div class="carrier-detail">{{ carrier.name }}</div>
+                <button class="button primary"
+                    [disabled]="displayFormForCarrier === carrier.id"
+                    (click)="displayCarrierForm(carrier)">
+                    Edit
+                </button>
+            </div>
+
+            <app-carrier-form *ngIf="displayFormForCarrier === carrier.id"
+                [carrier]="carrier"
+                (hideForm)="resetCarrierForm()"
+                (update)="updateCarrier($event)">
+            </app-carrier-form>
+        </li>
+    </div>
 </div>
 
-<button class="button add-new">
-    + Add New Carrier
-</button>
+<app-carrier-form
+    *ngIf="hidePage"
+    [carrier]=""
+    (hideForm)="toggleAddNewForm()"
+    (create)="createCarrier($event)"
+    >
+</app-carrier-form>
 
 <ng-template #loading>
-    <b>Loading Carriers</b>
+    <div class="loading">
+        <b>Loading Carriers</b>
+    </div>
 </ng-template>

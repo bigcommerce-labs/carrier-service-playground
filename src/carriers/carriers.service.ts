@@ -25,4 +25,12 @@ export class CarriersService {
                 map((res: any) => res)
             );
     }
+
+    createCarrier(payload: any) {
+        return this.http.post(
+            `${this.API_URL}`, payload)
+            .pipe(
+                map((res: any) => res)
+            );
+    }
 }

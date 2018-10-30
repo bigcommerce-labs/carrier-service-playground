@@ -1,5 +1,5 @@
 <div class="carrier-form">
-    <h1>Update Carrier: {{ carrierName }}</h1>
+    <h1>{{ carrierName }}</h1>
     <form [formGroup]="form">
 
         <div class="form-field">
@@ -47,8 +47,15 @@
 
         <div class="form-actions">
             <button class="form-button"
+                *ngIf="carrier"
                 (click)="updateCarrier()">
-                    Save
+                    Update
+            </button>
+
+            <button class="form-button"
+                *ngIf="!carrier"
+                (click)="createCarrier()">
+                    Create
             </button>
 
             <button class="form-button"

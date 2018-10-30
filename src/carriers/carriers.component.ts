@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 export class CarriersComponent implements OnInit {
     carriers: any[];
     displayFormForCarrier: string;
+    hidePage = false;
 
     constructor(
         private carrierService: CarriersService
@@ -31,6 +32,10 @@ export class CarriersComponent implements OnInit {
         this.displayFormForCarrier = '';
     }
 
+    toggleAddNewForm() {
+        this.hidePage = !this.hidePage;
+    }
+
     updateCarrier(event: any) {
         const { id, payload } = event;
         this.carrierService.updateCarrier(id, payload)
@@ -41,6 +46,14 @@ export class CarriersComponent implements OnInit {
                         carrier => carrier.id === res.id)],
                     res
                 );
+            });
+    }
+
+    createCarrier(event: any) {
+        this.carrierService.createCarrier(event)
+            .subscribe(res => {
+                this.carriers.push({...res});
+                this.toggleAddNewForm();
             });
     }
 }

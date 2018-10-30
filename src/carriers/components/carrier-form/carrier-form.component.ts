@@ -15,21 +15,28 @@ export class CarrierFormComponent implements OnChanges {
     update = new EventEmitter<any>();
 
     @Output()
+    create = new EventEmitter<any>();
+
+    @Output()
     hideForm = new EventEmitter();
+
+    APP_ID = 666;
 
     carrierName: string;
 
     form = this.fb.group({
         name: ['', Validators.required],
         description: ['', Validators.required],
-        is_public: [true],
+        is_public: [false],
         logo_url: ['']
     });
 
     ngOnChanges(changes: SimpleChanges) {
-        const value = { ...this.carrier };
-        this.carrierName = this.carrier.name;
-        this.form.patchValue(value);
+        if (this.carrier && this.carrier.id) {
+            const value = { ...this.carrier };
+            this.carrierName = this.carrier.name;
+            this.form.patchValue(value);
+        }
     }
 
     constructor(
@@ -38,10 +45,17 @@ export class CarrierFormComponent implements OnChanges {
 
     updateCarrier() {
         const payload = this.form.value;
-        payload.app_id = this.carrier.app_id;
+        payload.app_id = this.APP_ID;
         this.update.emit({
             payload,
             id: this.carrier.id,
+        });
+    }
+
+    createCarrier () {
+        this.create.emit({
+            ...this.form.value,
+            app_id: this.APP_ID
         });
     }
 
