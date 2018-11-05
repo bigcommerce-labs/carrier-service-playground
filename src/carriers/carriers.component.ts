@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CarriersService } from './carriers.service';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-carriers',
@@ -14,7 +13,7 @@ export class CarriersComponent implements OnInit {
     hidePage = false;
 
     constructor(
-        private carrierService: CarriersService
+        private carrierService: CarriersService,
     ) {}
 
     ngOnInit() {

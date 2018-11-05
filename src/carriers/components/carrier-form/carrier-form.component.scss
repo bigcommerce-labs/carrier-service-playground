@@ -1,8 +1,30 @@
+%button {
+    background: white;
+    border: 1px solid #4b71fc;
+    color: #4b71fc;
+    cursor: pointer;
+    min-height: 38px;
+    min-width: 5.3333rem;
+    padding: 5px 10px;
+}
+
+.upload-button {
+    @extend %button;
+    line-height: 38px;
+}
+
 .carrier-form {
     border: 1px solid #dbe3fe;
     width: 40%;
     margin: 25px auto 0;
     padding: 1rem 4rem;
+
+    .carrier-logo {
+        max-width: 8rem;
+        height: 4rem;
+        margin: 5px 0 0;
+        border: 2px solid #4b71fc;
+    }
 
     .form-field {
         display: flex;
@@ -67,19 +89,21 @@
             border-color: #4b71fc;
             outline: none;
         }
+
+        &:disabled {
+            background: lightgray;
+        }
+
+        &[type="file"] {
+            display: none;
+        }
     }
 
     .form-actions {
         text-align: end;
 
         .form-button {        
-            background: white;
-            border: 1px solid #4b71fc;
-            color: #4b71fc;
-            cursor: pointer;
-            min-height: 38px;
-            min-width: 5.3333rem;
-            padding: 5px 10px;
+            @extend %button;
 
             &:nth-child(2n) {
                 margin-left: 10px; 

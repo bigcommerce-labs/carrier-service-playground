@@ -29,15 +29,33 @@
         </div>
 
         <div class="form-field">
+            <label for="imageUpload" class="upload-button ">
+                <input
+                    class="form-input"
+                    type="file"
+                    (change)="uploadImage($event)"
+                    name="imageUpload"
+                    id="imageUpload"/>
+                {{ !uploading ? '+ Add Image' : 'Uploading Image...'}}
+            </label>
+    
+            <img
+                *ngIf="this.form.get('logo_url').value.length > 0"
+                class="carrier-logo"
+                [src]="this.form.get('logo_url').value" alt="Carrier Logo">            
+        </div>
+
+        <div class="form-field">
             <label class="form-label">Logo URL</label>
             <input
                 class="form-input"
                 type="text"
+                disabled
                 formControlName="logo_url"
                 placeholder="Carrier Logo">
             <div class="error"
                 *ngIf="form.get('logo_url').hasError('required') && form.get('logo_url').touched">
-                Description is required
+                Logo Url is required
             </div>
             <div class="error"
                 *ngIf="this.form.get('logo_url').hasError('invalidUrl') && form.get('logo_url').touched">
@@ -73,3 +91,9 @@
         </div>
     </form>
 </div>
+
+
+<!-- <label for="imageUpload">Image Upload</label>
+<input type="file" (change)="test($event)" name="imageUpload" id="imageUpload"/>
+
+<img [src]="imageSrc" alt=""> -->

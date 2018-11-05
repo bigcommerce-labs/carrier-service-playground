@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class CarriersService {
@@ -27,10 +27,13 @@ export class CarriersService {
     }
 
     createCarrier(payload: any) {
-        return this.http.post(
-            `${this.API_URL}`, payload)
-            .pipe(
-                map((res: any) => res)
-            );
+        const create = this.http.post(
+            `${this.API_URL}`, payload);
+        return create.pipe(
+            switchMap((res: any) => this.http.put(`${this.API_URL}/${res.id}/configs/${res.id}/publish`, {})
+                .pipe(map(() => res))
+            )
+        );
     }
 }
+

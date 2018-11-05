@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from '../shared/shared.module';
 import { CarriersComponent } from './carriers.component';
 import { CarrierFormComponent } from './components/carrier-form/carrier-form.component';
 import { CarriersService } from './carriers.service';
@@ -15,7 +16,8 @@ import { CarriersService } from './carriers.service';
     imports: [
         CommonModule,
         HttpClientModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SharedModule.forRoot()
     ],
     providers: [
         CarriersService

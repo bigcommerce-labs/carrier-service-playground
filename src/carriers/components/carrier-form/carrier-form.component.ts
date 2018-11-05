@@ -2,6 +2,8 @@ import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from
 import { FormBuilder, Validators } from '@angular/forms';
 import { logoUrlMatcher } from './logo-url.validator';
 
+import { AWSS3Service } from '../../../shared/aws-s3.sevice';
+
 @Component({
     selector: 'app-carrier-form',
     templateUrl: './carrier-form.component.html',
@@ -24,6 +26,7 @@ export class CarrierFormComponent implements OnChanges {
     APP_ID = 666;
 
     carrierName: string;
+    uploading = false;
 
     form = this.fb.group({
         name: ['', Validators.required],
@@ -41,8 +44,18 @@ export class CarrierFormComponent implements OnChanges {
     }
 
     constructor(
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private aws: AWSS3Service,
     ) {}
+
+    uploadImage(file) {
+        this.uploading = true;
+        this.aws.uploadImage(event)
+            .subscribe(location => {
+                this.form.get('logo_url').patchValue(location);
+                this.uploading = false;
+            });
+    }
 
     updateCarrier() {
         const payload = this.form.value;

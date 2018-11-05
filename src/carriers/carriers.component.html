@@ -13,6 +13,7 @@
             *ngFor="let carrier of carrierList">
 
             <div class="layout-row align-items-center">
+                <img [src]="carrier.logo_url" class="carrier-logo" alt="">
                 <div class="carrier-detail">{{ carrier.name }}</div>
                 <button class="button primary"
                     [disabled]="displayFormForCarrier === carrier.id"
