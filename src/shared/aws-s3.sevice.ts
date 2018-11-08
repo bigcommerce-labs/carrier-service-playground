@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs';
+import AWS_CONFIG from '../../src/constants';
 
 @Injectable()
 export class AWSS3Service {
@@ -14,8 +15,8 @@ export class AWSS3Service {
     constructor() {
         this.bucket = new S3({
             region: this.config.region,
-            accessKeyId: 'AKIAJOIXDI6BLGX4ICUA',
-            secretAccessKey: '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',
+            accessKeyId: AWS_CONFIG.accessKeyId,
+            secretAccessKey: AWS_CONFIG.secretAccessKey,
         });
     }
 
