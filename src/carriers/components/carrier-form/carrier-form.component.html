@@ -1,51 +1,57 @@
 <div class="carrier-form">
-    <h1>{{ carrierName }}</h1>
+    <h1>{{ !!carrierName ? 'Edit ' + carrierName : 'Add Shipping Rate Provider' }}</h1>
     <form [formGroup]="form">
 
-        <div class="form-field">
-            <label class="form-label">Name</label>
-            <input
-                class="form-input"
-                type="text"
-                formControlName="name"
-                placeholder="Name of Carrier">
-            <div class="error"
-                *ngIf="form.get('name').hasError('required') && form.get('name').touched">
-                Meal name is required
-            </div>
-        </div>
+        <div class="layout-row">
+            <div class="layout-column flex-grow">
+                <div class="form-field">
+                    <label class="form-label">Name</label>
+                    <input
+                        class="form-input"
+                        type="text"
+                        formControlName="name"
+                        placeholder="Name of Carrier">
+                    <div class="error"
+                        *ngIf="form.get('name').hasError('required') && form.get('name').touched">
+                        Carrier name is required
+                    </div>
+                </div>
 
-        <div class="form-field">
-            <label class="form-label">Description</label>
-            <input
-                class="form-input"
-                type="text"
-                formControlName="description"
-                placeholder="Carrier Description">
-            <div class="error"
-                *ngIf="form.get('description').hasError('required') && form.get('description').touched">
-                Description is required
+                <div class="form-field">
+                    <label class="form-label">Description</label>
+                    <input
+                        class="form-input"
+                        type="text"
+                        formControlName="description"
+                        placeholder="Carrier Description">
+                    <div class="error"
+                        *ngIf="form.get('description').hasError('required') && form.get('description').touched">
+                        Description is required
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="form-field">
-            <label for="imageUpload" class="upload-button ">
-                <input
-                    class="form-input"
-                    type="file"
-                    (change)="uploadImage($event)"
-                    name="imageUpload"
-                    id="imageUpload"/>
-                {{ !uploading ? '+ Add Image' : 'Uploading Image...'}}
-            </label>
+            <div class="logo-upload-container">
+                <div class="logo-placeholder"></div>
     
-            <img
-                *ngIf="this.form.get('logo_url').value.length > 0"
-                class="carrier-logo"
-                [src]="this.form.get('logo_url').value" alt="Carrier Logo">            
+                <img
+                    *ngIf="this.form.get('logo_url').value.length > 0"
+                    class="carrier-logo"
+                    [src]="this.form.get('logo_url').value" alt="Carrier Logo">
+
+                <label for="imageUpload" class="upload-button ">
+                    <input
+                        class="form-input"
+                        type="file"
+                        (change)="uploadImage($event)"
+                        name="imageUpload"
+                        id="imageUpload"/>
+                    {{ !uploading ? 'Upload Logo' : 'Uploading Logo...'}}
+                </label>
+            </div>
         </div>
 
-        <div class="form-field">
+        <!-- <div class="form-field">
             <label class="form-label">Logo URL</label>
             <input
                 class="form-input"
@@ -61,32 +67,39 @@
                 *ngIf="this.form.get('logo_url').hasError('invalidUrl') && form.get('logo_url').touched">
                 Invalid URL
             </div>
-        </div>
+        </div> -->
 
         <div class="form-field has-checkbox">
-            <label class="form-label">Public</label>
+            <div class="form-label">Visibility: </div>
             <input
                 class="form-checkbox"
                 type="checkbox"
                 formControlName="is_public">
+            <label>Public</label>
+
+            <input
+                class="form-checkbox"
+                type="checkbox"
+                formControlName="is_public">
+            <label>Per Store</label>
         </div>
 
         <div class="form-actions">
             <button class="form-button"
+                (click)="cancel()">
+                    Cancel
+            </button>
+
+            <button class="form-button primary-button"
                 *ngIf="carrier"
                 (click)="updateCarrier()">
                     Update
             </button>
 
-            <button class="form-button"
+            <button class="form-button primary-button"
                 *ngIf="!carrier"
                 (click)="createCarrier()">
                     Create
-            </button>
-
-            <button class="form-button"
-                (click)="cancel()">
-                    Cancel
             </button>
         </div>
     </form>

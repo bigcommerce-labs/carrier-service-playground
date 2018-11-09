@@ -1,11 +1,16 @@
 %button {
     background: white;
     border: 1px solid #4b71fc;
+    border-radius: 3px;
     color: #4b71fc;
     cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .4px;
     min-height: 38px;
     min-width: 5.3333rem;
     padding: 5px 10px;
+    transition: box-shadow .28s cubic-bezier(0.4,0.0,0.2,1);
 }
 
 .upload-button {
@@ -14,16 +19,32 @@
 }
 
 .carrier-form {
-    border: 1px solid #dbe3fe;
     width: 40%;
     margin: 25px auto 0;
     padding: 1rem 4rem;
 
-    .carrier-logo {
-        max-width: 8rem;
-        height: 4rem;
-        margin: 5px 0 0;
-        border: 2px solid #4b71fc;
+    h1 {
+        margin-bottom: 5rem;
+        margin-top: 0;
+    }
+
+    .logo-upload-container {
+        margin-left: 2rem;
+        margin-top: 1.3rem;
+
+        .carrier-logo {
+            max-width: 8rem;
+            height: 4rem;
+            margin: 5px 0 0;
+        }
+    
+        .logo-placeholder {
+            background: rgba(1, 1, 1, 0.2);
+            border: 1px solid lightgray;
+            max-width: 8rem;
+            height: 4rem;
+            margin: 5px 0 0;
+        }
     }
 
     .form-field {
@@ -83,7 +104,6 @@
         margin: 0;
         padding: 0.4rem 0.53333rem;
         transition: border-color 100ms ease-out;
-        width: 100%;
 
         &:active, &:focus {
             border-color: #4b71fc;
@@ -107,6 +127,16 @@
 
             &:nth-child(2n) {
                 margin-left: 10px; 
+            }
+
+            &.primary-button {
+                background: #4b71fc;
+                color: white;
+
+                &:hover {
+                    box-shadow: 0 1px 1px 0 rgba(66,133,244,0.45),
+                        0 1px 3px 1px rgba(66,133,244,0.3);
+                }
             }
         }
     }

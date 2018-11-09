@@ -58,6 +58,10 @@ export class CarrierFormComponent implements OnChanges {
     }
 
     updateCarrier() {
+        if (this.form.invalid) {
+            alert('Please fill the form and resubmit!');
+            return;
+        }
         const payload = this.form.value;
         payload.app_id = this.APP_ID;
         this.update.emit({
@@ -67,6 +71,10 @@ export class CarrierFormComponent implements OnChanges {
     }
 
     createCarrier () {
+        if (this.form.invalid) {
+            alert('Please fill the form and resubmit!');
+            return;
+        }
         this.create.emit({
             ...this.form.value,
             app_id: this.APP_ID
