@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Injectable()
 export class CarriersService {
@@ -16,6 +17,14 @@ export class CarriersService {
         .pipe(
             map((res: any) => res.data)
         );
+    }
+
+    getCarrierById(id: number): Observable<any> {
+        if (!id) {
+            return of({});
+        }
+        return this.http.get(`${this.API_URL}/${id}`)
+            .pipe(map(res => res));
     }
 
     updateCarrier(id: number, payload: any) {

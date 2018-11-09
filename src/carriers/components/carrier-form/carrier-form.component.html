@@ -1,5 +1,4 @@
 <div class="carrier-form">
-    <h1>{{ !!carrierName ? 'Edit ' + carrierName : 'Add Shipping Rate Provider' }}</h1>
     <form [formGroup]="form">
 
         <div class="layout-row">
@@ -32,7 +31,10 @@
             </div>
 
             <div class="logo-upload-container">
-                <div class="logo-placeholder"></div>
+                <div
+                    *ngIf="this.form.get('logo_url').value.length === 0"
+                    class="logo-placeholder">
+                </div>
     
                 <img
                     *ngIf="this.form.get('logo_url').value.length > 0"

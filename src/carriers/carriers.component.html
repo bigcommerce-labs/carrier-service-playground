@@ -1,7 +1,7 @@
 <div *ngIf="!hidePage">
     <h1>Carrier Portal</h1>
     <button
-        (click)="toggleAddNewForm()"
+        [routerLink]="['../carriers/new']"
         class="button add-new">
         + Add New Carrier
     </button>
@@ -16,17 +16,10 @@
                 <img [src]="carrier.logo_url" class="carrier-logo" alt="">
                 <div class="carrier-detail">{{ carrier.name }}</div>
                 <button class="button primary"
-                    [disabled]="displayFormForCarrier === carrier.id"
-                    (click)="displayCarrierForm(carrier)">
+                    [routerLink]="['../carriers', carrier.id]">
                     Edit
                 </button>
             </div>
-
-            <app-carrier-form *ngIf="displayFormForCarrier === carrier.id"
-                [carrier]="carrier"
-                (hideForm)="resetCarrierForm()"
-                (update)="updateCarrier($event)">
-            </app-carrier-form>
         </li>
     </div>
 </div>

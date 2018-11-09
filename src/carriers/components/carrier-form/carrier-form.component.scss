@@ -16,6 +16,8 @@
 .upload-button {
     @extend %button;
     line-height: 38px;
+    max-height: 38px;
+    padding: 0 5px;
 }
 
 .carrier-form {
@@ -31,11 +33,13 @@
     .logo-upload-container {
         margin-left: 2rem;
         margin-top: 1.3rem;
+        display: flex;
+        flex-direction: column;
 
         .carrier-logo {
             max-width: 8rem;
             height: 4rem;
-            margin: 5px 0 0;
+            margin: 5px 0 5px;
         }
     
         .logo-placeholder {
@@ -43,7 +47,7 @@
             border: 1px solid lightgray;
             max-width: 8rem;
             height: 4rem;
-            margin: 5px 0 0;
+            margin: 5px 0 5px;
         }
     }
 
