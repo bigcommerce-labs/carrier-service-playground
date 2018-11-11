@@ -1,9 +1,17 @@
-<p>
+<div>
+    <h1>{{ carrier?.name ? 'Edit ' + carrier.name : 'Add Shipping Rate Provider' }}</h1>
 
-<h1>{{ !!carrierName ? 'Edit ' + carrierName : 'Add Shipping Rate Provider' }}</h1>
-
-<app-carrier-form *ngIf="displayFormForCarrier === carrier.id"
-      [carrier]="carrier | async"
-      (hideForm)="resetCarrierForm()"
-      (update)="updateCarrier($event)">
+<app-carrier-form
+    [carrier]="carrier"
+    (goBack)="backToCarriers()"
+    (create)="createCarrier($event)"
+    (update)="updateCarrier($event)">
 </app-carrier-form>
+
+<button
+    (click)="toggleCarrierConfigForm()"
+    class="button">
+    Add Carrier Configuration
+</button>
+            
+</div>

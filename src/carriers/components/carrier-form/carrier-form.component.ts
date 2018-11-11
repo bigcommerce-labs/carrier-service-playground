@@ -21,7 +21,7 @@ export class CarrierFormComponent implements OnChanges {
     create = new EventEmitter<any>();
 
     @Output()
-    hideForm = new EventEmitter();
+    goBack = new EventEmitter();
 
     APP_ID = 666;
 
@@ -82,6 +82,6 @@ export class CarrierFormComponent implements OnChanges {
     }
 
     cancel() {
-        this.hideForm.emit();
+        this.goBack.emit();
     }
 }

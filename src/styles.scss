@@ -1,4 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+%button {
+    background: white;
+    border: 1px solid #4b71fc;
+    border-radius: 3px;
+    color: #4b71fc;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .4px;
+    min-height: 38px;
+    min-width: 5.3333rem;
+    padding: 5px 10px;
+    transition: box-shadow .28s cubic-bezier(0.4,0.0,0.2,1);
+}
+
+.button {
+    @extend %button;
+}
+
 html {
     font-size: 14px;
 }

@@ -1,4 +1,4 @@
-<div *ngIf="!hidePage">
+<div>
     <h1>Carrier Portal</h1>
     <button
         [routerLink]="['../carriers/new']"
@@ -23,14 +23,6 @@
         </li>
     </div>
 </div>
-
-<app-carrier-form
-    *ngIf="hidePage"
-    [carrier]=""
-    (hideForm)="toggleAddNewForm()"
-    (create)="createCarrier($event)"
-    >
-</app-carrier-form>
 
 <ng-template #loading>
     <div class="loading">

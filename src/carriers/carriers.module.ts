@@ -9,18 +9,26 @@ import { CarriersComponent } from './carriers.component';
 import { CarrierFormComponent } from './components/carrier-form/carrier-form.component';
 import { CarriersService } from './carriers.service';
 import { CarrierComponent } from './carrier/carrier.component';
+import { CarrierConfigurationsComponent } from './components/carrier-configurations/carrier-configurations.component';
 
 export const ROUTES: Routes = [
-    { path: '', component: CarriersComponent },
-    { path: 'new', component: CarrierComponent },
-    { path: ':id', component: CarrierComponent },
+    {
+        path: '', component: CarriersComponent
+    },
+    {
+        path: 'new', component: CarrierComponent
+    },
+    {
+        path: ':id', component: CarrierComponent,
+    },
 ];
 
 @NgModule({
     declarations: [
         CarriersComponent,
         CarrierFormComponent,
-        CarrierComponent
+        CarrierComponent,
+        CarrierConfigurationsComponent
     ],
     imports: [
         CommonModule,
@@ -30,7 +38,7 @@ export const ROUTES: Routes = [
         SharedModule.forRoot()
     ],
     providers: [
-        CarriersService
+        CarriersService,
     ],
     exports: [
         CarriersComponent
