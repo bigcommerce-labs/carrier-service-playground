@@ -7,7 +7,7 @@ import AWS_CONFIG from '../../src/constants';
 export class AWSS3Service {
     // Move config to constants later.
     private config = {
-        region: 'us-east-2',
+        region: 'ap-southeast-2',
         bucketName: 'carrierservice',
     };
 

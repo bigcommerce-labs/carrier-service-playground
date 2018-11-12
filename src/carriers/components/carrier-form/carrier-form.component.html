@@ -93,22 +93,16 @@
             </button>
 
             <button class="form-button primary-button"
-                *ngIf="carrier"
+                *ngIf="exists"
                 (click)="updateCarrier()">
                     Update
             </button>
 
             <button class="form-button primary-button"
-                *ngIf="!carrier"
+                *ngIf="!exists"
                 (click)="createCarrier()">
                     Create
             </button>
         </div>
     </form>
 </div>
-
-
-<!-- <label for="imageUpload">Image Upload</label>
-<input type="file" (change)="test($event)" name="imageUpload" id="imageUpload"/>
-
-<img [src]="imageSrc" alt=""> -->

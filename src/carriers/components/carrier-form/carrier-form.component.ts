@@ -1,10 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { logoUrlMatcher } from './logo-url.validator';
 
 import { AWSS3Service } from '../../../shared/aws-s3.sevice';
 
 @Component({
+    // changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-carrier-form',
     templateUrl: './carrier-form.component.html',
     styleUrls: ['./carrier-form.component.scss']
@@ -32,8 +33,9 @@ export class CarrierFormComponent implements OnChanges {
         name: ['', Validators.required],
         description: ['', Validators.required],
         is_public: [false],
-        logo_url: ['', [Validators.required, logoUrlMatcher]]
+        logo_url: ['', []]
     });
+    // Validators.required, logoUrlMatcher
 
     ngOnChanges(changes: SimpleChanges) {
         if (this.carrier && this.carrier.id) {
@@ -42,6 +44,10 @@ export class CarrierFormComponent implements OnChanges {
             this.form.patchValue(value);
         }
     }
+
+    get exists() {
+        return !!(this.carrier && this.carrier.id);
+      }
 
     constructor(
         private fb: FormBuilder,
