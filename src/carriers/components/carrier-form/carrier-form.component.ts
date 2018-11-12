@@ -33,9 +33,8 @@ export class CarrierFormComponent implements OnChanges {
         name: ['', Validators.required],
         description: ['', Validators.required],
         is_public: [false],
-        logo_url: ['', []]
+        logo_url: ['', [Validators.required, logoUrlMatcher]]
     });
-    // Validators.required, logoUrlMatcher
 
     ngOnChanges(changes: SimpleChanges) {
         if (this.carrier && this.carrier.id) {

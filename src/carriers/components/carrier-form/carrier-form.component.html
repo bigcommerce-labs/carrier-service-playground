@@ -53,24 +53,6 @@
             </div>
         </div>
 
-        <!-- <div class="form-field">
-            <label class="form-label">Logo URL</label>
-            <input
-                class="form-input"
-                type="text"
-                disabled
-                formControlName="logo_url"
-                placeholder="Carrier Logo">
-            <div class="error"
-                *ngIf="form.get('logo_url').hasError('required') && form.get('logo_url').touched">
-                Logo Url is required
-            </div>
-            <div class="error"
-                *ngIf="this.form.get('logo_url').hasError('invalidUrl') && form.get('logo_url').touched">
-                Invalid URL
-            </div>
-        </div> -->
-
         <div class="form-field has-checkbox">
             <div class="form-label">Visibility: </div>
             <input
@@ -85,6 +67,8 @@
                 formControlName="is_public">
             <label>Per Store</label>
         </div>
+
+        <app-carrier-configurations></app-carrier-configurations>
 
         <div class="form-actions">
             <button class="form-button"

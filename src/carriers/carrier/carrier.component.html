@@ -1,17 +1,10 @@
 <div>
     <h1>{{ carrier?.name ? 'Edit ' + carrier.name : 'Add Shipping Rate Provider' }}</h1>
 
-<app-carrier-form
-    [carrier]="carrier"
-    (goBack)="backToCarriers()"
-    (create)="createCarrier($event)"
-    (update)="updateCarrier($event)">
-</app-carrier-form>
-
-<button
-    (click)="toggleCarrierConfigForm()"
-    class="button">
-    Add Carrier Configuration
-</button>
-            
+    <app-carrier-form
+        [carrier]="carrier"
+        (goBack)="backToCarriers()"
+        (create)="createCarrier($event)"
+        (update)="updateCarrier($event)">
+    </app-carrier-form>
 </div>
