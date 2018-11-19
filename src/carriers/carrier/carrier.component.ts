@@ -33,18 +33,7 @@ export class CarrierComponent implements OnInit {
       });
   }
 
-  createCarrier(event: any) {
-    this.carrierService.createCarrier(event)
-      .subscribe(res => {
-        Object.assign(this.carrier, res);
-      });
-  }
-
   backToCarriers() {
     this.router.navigate(['../carriers']);
-  }
-
-  toggleCarrierConfigForm() {
-    console.log('toggle');
   }
 }

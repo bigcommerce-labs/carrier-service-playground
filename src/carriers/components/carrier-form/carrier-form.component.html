@@ -68,8 +68,6 @@
             <label>Per Store</label>
         </div>
 
-        <app-carrier-configurations></app-carrier-configurations>
-
         <div class="form-actions">
             <button class="form-button"
                 (click)="cancel()">
@@ -85,7 +83,7 @@
             <button class="form-button primary-button"
                 *ngIf="!exists"
                 (click)="createCarrier()">
-                    Create
+                    Save and Continue
             </button>
         </div>
     </form>

@@ -10,13 +10,14 @@ import { CarrierFormComponent } from './components/carrier-form/carrier-form.com
 import { CarriersService } from './carriers.service';
 import { CarrierComponent } from './carrier/carrier.component';
 import { CarrierConfigurationsComponent } from './components/carrier-configurations/carrier-configurations.component';
+import { CarrierNewComponent } from './carrier-new/carrier-new.component';
 
 export const ROUTES: Routes = [
     {
         path: '', component: CarriersComponent
     },
     {
-        path: 'new', component: CarrierComponent
+        path: 'new', component: CarrierNewComponent
     },
     {
         path: ':id', component: CarrierComponent,
@@ -28,7 +29,8 @@ export const ROUTES: Routes = [
         CarriersComponent,
         CarrierFormComponent,
         CarrierComponent,
-        CarrierConfigurationsComponent
+        CarrierConfigurationsComponent,
+        CarrierNewComponent
     ],
     imports: [
         CommonModule,

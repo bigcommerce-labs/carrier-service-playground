@@ -1,0 +1,46 @@
+.steppers {
+    position: fixed;
+    top: 4rem;
+    width: 40%;
+    left: calc((100% - 40%) / 2);
+
+    .step {
+        align-items: center;
+        width: 50%;
+        
+        .number {
+            background: #313440;
+            border-radius: 50%;
+            color: white;
+            padding: 10px 14px;
+        }
+
+        .material-icons {
+            border-radius: 50%;
+            color: #9EB3FC;
+            font-size: 40px;
+        }
+
+        .text {
+            margin-left: 5px;
+        }
+
+        .line-right {
+            border-top: 1px solid #313440;
+            flex: 1;
+            margin-left: 3px;
+            padding-right: 30px;
+        }
+
+        .line-left {
+            border-top: 1px solid #313440;
+            flex: 1;
+            margin-right: 3px;
+            padding-right: 30px;
+        }
+    }
+}
+
+.steppers-body {
+    margin-top: 6rem;
+}
