@@ -10,6 +10,7 @@ import { CarriersService } from '../carriers.service';
 export class CarrierNewComponent implements OnInit {
 
   private carrier = {};
+  private configuration = {};
   private displayCarrierForm = true;
 
   constructor(

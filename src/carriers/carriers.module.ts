@@ -11,6 +11,7 @@ import { CarriersService } from './carriers.service';
 import { CarrierComponent } from './carrier/carrier.component';
 import { CarrierConfigurationsComponent } from './components/carrier-configurations/carrier-configurations.component';
 import { CarrierNewComponent } from './carrier-new/carrier-new.component';
+import { ConfigurationFormComponent } from './components/configuration-form/configuration-form.component';
 
 export const ROUTES: Routes = [
     {
@@ -30,7 +31,8 @@ export const ROUTES: Routes = [
         CarrierFormComponent,
         CarrierComponent,
         CarrierConfigurationsComponent,
-        CarrierNewComponent
+        CarrierNewComponent,
+        ConfigurationFormComponent
     ],
     imports: [
         CommonModule,

@@ -1,11 +1,10 @@
-import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { logoUrlMatcher } from './logo-url.validator';
 
 import { AWSS3Service } from '../../../shared/aws-s3.sevice';
 
 @Component({
-    // changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'app-carrier-form',
     templateUrl: './carrier-form.component.html',
     styleUrls: ['./carrier-form.component.scss']

@@ -1,0 +1,65 @@
+<p>
+  {{ form.value | json }}
+</p>
+
+<div class="carrier-configuration-form">
+    <form [formGroup]="form">
+        <div class="layout-column">
+            <div class="form-field">
+                <label class="form-label">Quote URL</label>
+                <input
+                    class="form-input"
+                    type="text"
+                    formControlName="quote_url"
+                    placeholder="URL to fetch quotes">
+                <div class="error"
+                    *ngIf="form.get('quote_url').hasError('required') && form.get('quote_url').touched">
+                    Quote URL is required
+                </div>
+                <div class="error"
+                    *ngIf="this.form.get('quote_url').hasError('invalidUrl') && form.get('quote_url').touched">
+                    Invalid URL
+                </div>
+            </div>
+
+            <div class="form-field has-checkbox">
+                <input
+                    class="form-checkbox"
+                    type="checkbox"
+                    formControlName="zones_enabled">
+                <label>Use BC Zones</label>
+            </div>
+
+            <div class="form-field">
+                <label for="country" class="form-label">Supported Countries</label>
+                <select class="form-select" formControlName="supported_country_values">
+                    <option *ngFor="let country of countries" [value]="country.code">{{ country.name }}</option>
+                </select>
+                <div class="error"
+                *ngIf="form.get('supported_country_values').hasError('required') && form.get('supported_country_values').touched">
+                    Country is required
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label class="form-label">Connection Settings Schema</label>
+                <input
+                    class="form-input"
+                    type="text"
+                    formControlName="settings_schema"
+                    placeholder="Connection Settings Schema">
+                <div class="error"
+                    *ngIf="form.get('settings_schema').hasError('required') && form.get('settings_schema').touched">
+                    Connection settings are required
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button class="form-button primary-button"
+                (click)="createConfiguration()">
+                    Save
+            </button>
+        </div>
+    </form>
+</div>

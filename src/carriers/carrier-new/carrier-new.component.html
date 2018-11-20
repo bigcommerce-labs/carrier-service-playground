@@ -24,8 +24,10 @@
         (update)="updateCarrier($event)">
     </app-carrier-form>
 
-    <app-carrier-configurations
-      *ngIf="!displayCarrierForm">
-    </app-carrier-configurations>
+    <app-configuration-form
+      *ngIf="!displayCarrierForm"
+      [configuration]="configuration"
+      (create)="createConfiguration($event)">
+    </app-configuration-form>
     </div>
 </div>
