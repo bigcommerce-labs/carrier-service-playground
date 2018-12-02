@@ -42,13 +42,4 @@ export class CarriersService {
             map((res: any) => res)
         );
     }
-
-    publishConfig() {
-        return true;
-        // return create.pipe(
-        //     switchMap((res: any) => this.http.put(`${this.API_URL}/${res.id}/configs/${res.id}/publish`, {})
-        //         .pipe(map(() => res))
-        //     )
-        // );
-    }
 }

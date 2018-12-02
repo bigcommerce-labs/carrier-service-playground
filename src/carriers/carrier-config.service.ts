@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 @Injectable()
 export class ConfigurationService {
     private API_URL = (id) => `/api/${id}/configs`;
+    private PUBLISH_API_URL = (carrierId, configId) => `/api/${carrierId}/configs/${configId}/publish`;
 
     constructor(
         private http: HttpClient
@@ -15,10 +16,13 @@ export class ConfigurationService {
     createConfiguration(payload: any, id: number) {
         payload.supported_origin_countries = [payload.supported_origin_countries];
         payload.settings_schema = JSON.parse(payload.settings_schema);
-        return this.http.post(
-            `${this.API_URL(id)}`, payload)
-        .pipe(
-            map((res: any) => res)
-        );
+        const create = this.http.post(
+            `${this.API_URL(id)}`, payload);
+        return create.pipe(switchMap((res: any) => this.publishConfig(id, res.id)));
+    }
+
+    publishConfig(carrierId: number, configId: number) {
+        return this.http.put(this.PUBLISH_API_URL(carrierId, configId), {})
+            .pipe(map((res) => res));
     }
 }
