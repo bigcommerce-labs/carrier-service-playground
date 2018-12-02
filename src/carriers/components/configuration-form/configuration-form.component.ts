@@ -24,10 +24,11 @@ export class ConfigurationFormComponent implements OnChanges {
 
   form = this.fb.group({
     zones_enabled: [true],
-    check_connection_options_url: [],
     multi_carrier_support: [true],
+    check_connection_options_url:
+      ['https://test.com', [Validators.required, logoUrlMatcher]],
     quote_url: ['https://desolate-dusk-94538.herokuapp.com/sample-carrier-service/rates', [Validators.required, logoUrlMatcher]],
-    supported_country_values: ['', Validators.required],
+    supported_origin_countries: ['', Validators.required],
     settings_schema: [`{"connection":{"fields":[]},"zone":{"fields":[]}}`, Validators.required]
 });
 
@@ -36,6 +37,14 @@ export class ConfigurationFormComponent implements OnChanges {
       const value = { ...this.configuration };
       this.form.patchValue(value);
     }
+  }
+
+  createConfiguration() {
+    if (this.form.invalid) {
+      alert('Please fill the form and resubmit!');
+      return;
+    }
+    this.create.emit({...this.form.value});
   }
 
 }

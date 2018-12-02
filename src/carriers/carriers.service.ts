@@ -36,13 +36,19 @@ export class CarriersService {
     }
 
     createCarrier(payload: any) {
-        const create = this.http.post(
-            `${this.API_URL}`, payload);
-        return create.pipe(
-            switchMap((res: any) => this.http.put(`${this.API_URL}/${res.id}/configs/${res.id}/publish`, {})
-                .pipe(map(() => res))
-            )
+        return this.http.post(
+            `${this.API_URL}`, payload)
+        .pipe(
+            map((res: any) => res)
         );
     }
-}
 
+    publishConfig() {
+        return true;
+        // return create.pipe(
+        //     switchMap((res: any) => this.http.put(`${this.API_URL}/${res.id}/configs/${res.id}/publish`, {})
+        //         .pipe(map(() => res))
+        //     )
+        // );
+    }
+}

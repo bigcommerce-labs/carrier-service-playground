@@ -1,6 +1,6 @@
-<p>
+<!-- <p>
   {{ form.value | json }}
-</p>
+</p> -->
 
 <div class="carrier-configuration-form">
     <form [formGroup]="form">
@@ -22,6 +22,23 @@
                 </div>
             </div>
 
+            <div class="form-field">
+                <label class="form-label">Check Connection Options URL</label>
+                <input
+                    class="form-input"
+                    type="text"
+                    formControlName="check_connection_options_url"
+                    placeholder="Connection options URL">
+                <div class="error"
+                    *ngIf="form.get('check_connection_options_url').hasError('required') && form.get('check_connection_options_url').touched">
+                    Quote URL is required
+                </div>
+                <div class="error"
+                    *ngIf="this.form.get('check_connection_options_url').hasError('invalidUrl') && form.get('check_connection_options_url').touched">
+                    Invalid URL
+                </div>
+            </div>
+
             <div class="form-field has-checkbox">
                 <input
                     class="form-checkbox"
@@ -30,13 +47,21 @@
                 <label>Use BC Zones</label>
             </div>
 
+            <div class="form-field has-checkbox">
+                <input
+                    class="form-checkbox"
+                    type="checkbox"
+                    formControlName="multi_carrier_support">
+                <label>Multi Carrier Support</label>
+            </div>
+
             <div class="form-field">
                 <label for="country" class="form-label">Supported Countries</label>
-                <select class="form-select" formControlName="supported_country_values">
+                <select class="form-select" formControlName="supported_origin_countries">
                     <option *ngFor="let country of countries" [value]="country.code">{{ country.name }}</option>
                 </select>
                 <div class="error"
-                *ngIf="form.get('supported_country_values').hasError('required') && form.get('supported_country_values').touched">
+                *ngIf="form.get('supported_origin_countries').hasError('required') && form.get('supported_origin_countries').touched">
                     Country is required
                 </div>
             </div>

@@ -1,18 +1,20 @@
 <div>
-  <div class="steppers layout-row">
-    <div class="step layout-row">
-      <span class="number" *ngIf="displayCarrierForm">1</span>
-      <i class="material-icons" *ngIf="!displayCarrierForm">
-        check_circle
-      </i>
-      <span class="text">Create Carrier</span>
-      <div class="line-right"></div>
-    </div>
-    <div class="step layout-row">
-        <div class="line-left"></div>
-      <span class="number">2</span>
-      <span class="text">Add Configuration</span>
-    </div>
+  <div class="steppers-container">
+    <div class="steppers layout-row">
+        <div class="step layout-row">
+          <span class="number" *ngIf="displayCarrierForm">1</span>
+          <i class="material-icons" *ngIf="!displayCarrierForm">
+            check_circle
+          </i>
+          <span class="text">Create Carrier</span>
+          <div class="line-right"></div>
+        </div>
+        <div class="step layout-row">
+            <div class="line-left"></div>
+          <span class="number">2</span>
+          <span class="text">Add Configuration</span>
+        </div>
+      </div>
   </div>
 
   <div class="steppers-body">
