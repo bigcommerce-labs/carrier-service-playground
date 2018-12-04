@@ -34,7 +34,7 @@ export const ROUTES: Routes = [
         CarrierComponent,
         CarrierNewComponent,
         ConfigurationFormComponent,
-        ConfigurationTableComponent
+        ConfigurationTableComponent,
     ],
     imports: [
         CommonModule,

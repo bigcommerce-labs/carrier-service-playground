@@ -1,14 +1,16 @@
 
-    <!-- <h1>{{ carrier?.name ? 'Edit ' + carrier.name : 'Add Shipping Rate Provider' }}</h1> -->
+<div *ngIf="editing">
+    <h1>{{ carrier?.name ? 'Edit ' + carrier.name : 'Add Shipping Rate Provider' }}</h1>
 
-    <!-- <app-carrier-form
+    <app-carrier-form
         [carrier]="carrier"
-        (goBack)="backToCarriers()"
+        (goBack)="toggleEditing()"
         (create)="createCarrier($event)"
         (update)="updateCarrier($event)">
-    </app-carrier-form> -->
+    </app-carrier-form>
+</div>
 
-<div class="carrier layout-column">
+<div class="carrier layout-column" *ngIf="!editing">
     <button
         [routerLink]="['/carriers']"
         class="button back-button">
@@ -36,7 +38,11 @@
             </div>
         </div>
         <div class="layout-column">
-            <button class="button primary-button">Edit Carrier</button>
+            <button
+                (click)="toggleEditing()"
+                class="button primary-button">
+                Edit Carrier
+            </button>
             <img [src]="carrier?.logo_url" class="carrier-logo" alt="Carrier Logo">
         </div>
     </div>

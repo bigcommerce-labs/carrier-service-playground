@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 @Injectable()
 export class CarriersService {
     private API_URL = '/api';
+    private carrierChosen: any;
 
     constructor(
         private http: HttpClient
@@ -24,7 +25,10 @@ export class CarriersService {
             return of({});
         }
         return this.http.get(`${this.API_URL}/${id}`)
-            .pipe(map(res => res));
+            .pipe(map(res => {
+                this.carrierChosen = Object.assign({}, res);
+                return res;
+            }));
     }
 
     updateCarrier(id: number, payload: any) {

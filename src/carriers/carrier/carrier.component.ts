@@ -6,43 +6,48 @@ import { switchMap, map, } from 'rxjs/operators';
 import { forkJoin } from 'rxjs';
 
 @Component({
-  selector: 'app-carrier',
-  templateUrl: './carrier.component.html',
-  styleUrls: ['./carrier.component.scss']
+    selector: 'app-carrier',
+    templateUrl: './carrier.component.html',
+    styleUrls: ['./carrier.component.scss']
 })
 export class CarrierComponent implements OnInit {
-  private carrier: any;
-  private configurations: any;
+    private carrier: any;
+    private configurations: any;
+    private editing = false;
 
-  constructor(
-    private carrierService: CarriersService,
-    private configurationService: ConfigurationService,
-    private route: ActivatedRoute,
-    private router: Router,
-  ) { }
+    constructor(
+        private carrierService: CarriersService,
+        private configurationService: ConfigurationService,
+        private route: ActivatedRoute,
+        private router: Router,
+    ) { }
 
-  ngOnInit() {
-    this.route.params.pipe(
-      switchMap(params => forkJoin(
-        this.carrierService.getCarrierById(params.id),
-        this.configurationService.getConfiguration(params.id)
-      ))
-    ).subscribe(([carrier, configurations]) => {
-      console.log(carrier);
-      this.carrier = carrier;
-      this.configurations = configurations;
-    });
-  }
+    ngOnInit() {
+        this.route.params.pipe(
+            switchMap(params => forkJoin(
+            this.carrierService.getCarrierById(params.id),
+            this.configurationService.getConfiguration(params.id)
+            ))
+        ).subscribe(([carrier, configurations]) => {
+            this.carrier = carrier;
+            this.configurations = configurations;
+        });
+    }
 
-  updateCarrier(event: any) {
-    const { id, payload } = event;
-    this.carrierService.updateCarrier(id, payload)
-      .subscribe(res => {
-        Object.assign(this.carrier, res);
-      });
-  }
+    updateCarrier(event: any) {
+        const { id, payload } = event;
+        this.carrierService.updateCarrier(id, payload)
+            .subscribe(res => {
+                Object.assign(this.carrier, res);
+                this.toggleEditing();
+            });
+    }
 
-  backToCarriers() {
-    this.router.navigate(['../carriers']);
-  }
+    toggleEditing() {
+        this.editing = !this.editing;
+    }
+
+    backToCarriers() {
+        this.router.navigate(['../carriers']);
+    }
 }
