@@ -1,7 +1,3 @@
-<!-- <p>
-  {{ form.value | json }}
-</p> -->
-
 <div class="carrier-configuration-form">
     <form [formGroup]="form">
         <div class="layout-column">
@@ -58,7 +54,7 @@
             <div class="form-field">
                 <label for="country" class="form-label">Supported Countries</label>
                 <select class="form-select" formControlName="supported_origin_countries">
-                    <option *ngFor="let country of countries" [value]="country.code">{{ country.name }}</option>
+                    <option *ngFor="let country of countriesData" [value]="country.code">{{ country.name }}</option>
                 </select>
                 <div class="error"
                 *ngIf="form.get('supported_origin_countries').hasError('required') && form.get('supported_origin_countries').touched">
@@ -81,6 +77,11 @@
         </div>
 
         <div class="form-actions">
+            <button class="form-button"
+                (click)="cancel()">
+                    Back
+            </button>
+
             <button class="form-button primary-button"
                 (click)="createConfiguration()">
                     Save

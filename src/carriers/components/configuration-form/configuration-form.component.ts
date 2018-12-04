@@ -5,46 +5,58 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { COUNTRIES_DATA } from '../../../shared/countries-data.model';
 
 @Component({
-  selector: 'app-configuration-form',
-  templateUrl: './configuration-form.component.html',
-  styleUrls: ['./configuration-form.component.scss']
+    selector: 'app-configuration-form',
+    templateUrl: './configuration-form.component.html',
+    styleUrls: ['./configuration-form.component.scss']
 })
+
 export class ConfigurationFormComponent implements OnChanges {
 
-  @Input()
-  configuration;
+    @Input()
+    configuration;
 
-  @Output()
-  create = new EventEmitter<any>();
+    @Output()
+    goBack = new EventEmitter();
 
-  constructor(
+    @Output()
+    create = new EventEmitter<any>();
+
+    constructor(
     @Inject(COUNTRIES_DATA) private countries,
     private fb: FormBuilder
-  ) { }
+    ) { }
 
-  form = this.fb.group({
+    form = this.fb.group({
     zones_enabled: [true],
     multi_carrier_support: [true],
     check_connection_options_url:
-      ['https://test.com', [Validators.required, logoUrlMatcher]],
+        ['https://test.com', [Validators.required, logoUrlMatcher]],
     quote_url: ['https://desolate-dusk-94538.herokuapp.com/sample-carrier-service/rates', [Validators.required, logoUrlMatcher]],
     supported_origin_countries: ['', Validators.required],
     settings_schema: [`{"connection":{"fields":[]},"zone":{"fields":[]}}`, Validators.required]
-});
+    });
 
-  ngOnChanges() {
-    if (this.configuration && this.configuration.id) {
-      const value = { ...this.configuration };
-      this.form.patchValue(value);
+    ngOnChanges() {
+        if (this.configuration && this.configuration.id) {
+            const value = { ...this.configuration };
+            value.settings_schema = JSON.stringify(value.settings_schema);
+            this.form.patchValue(value);
+        }
     }
-  }
 
-  createConfiguration() {
-    if (this.form.invalid) {
-      alert('Please fill the form and resubmit!');
-      return;
+    get countriesData() {
+        return this.countries;
     }
-    this.create.emit({...this.form.value});
-  }
 
+    createConfiguration() {
+        if (this.form.invalid) {
+            alert('Please fill the form and resubmit!');
+            return;
+        }
+        this.create.emit({...this.form.value});
+    }
+
+    cancel() {
+        this.goBack.emit();
+    }
 }

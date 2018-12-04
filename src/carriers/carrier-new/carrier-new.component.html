@@ -2,8 +2,8 @@
   <div class="steppers-container">
     <div class="steppers layout-row">
         <div class="step layout-row">
-          <span class="number" *ngIf="displayCarrierForm">1</span>
-          <i class="material-icons" *ngIf="!displayCarrierForm">
+          <span class="number" *ngIf="carrierFormStatus">1</span>
+          <i class="material-icons" *ngIf="!carrierFormStatus">
             check_circle
           </i>
           <span class="text">Create Carrier</span>
@@ -19,7 +19,7 @@
 
   <div class="steppers-body">
     <app-carrier-form
-        *ngIf="displayCarrierForm"
+        *ngIf="carrierFormStatus"
         [carrier]="carrier"
         (goBack)="backToCarriers()"
         (create)="createCarrier($event)"
@@ -27,7 +27,7 @@
     </app-carrier-form>
 
     <app-configuration-form
-      *ngIf="!displayCarrierForm"
+      *ngIf="!carrierFormStatus"
       [configuration]="configuration"
       (create)="createConfiguration($event)">
     </app-configuration-form>

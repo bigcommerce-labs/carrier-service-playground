@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-configuration-table',
@@ -10,9 +10,16 @@ export class ConfigurationTableComponent implements OnInit {
     @Input()
     configurations: any[];
 
+    @Output()
+    showForm = new EventEmitter();
+
     constructor() { }
 
     ngOnInit() {
+    }
+
+    showFormEvent(configuration) {
+        this.showForm.emit(configuration);
     }
 
 }

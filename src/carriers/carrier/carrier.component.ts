@@ -14,6 +14,8 @@ export class CarrierComponent implements OnInit {
     private carrier: any;
     private configurations: any;
     private editing = false;
+    private chosenConfiguratoion = {};
+    private editingConfigForm = false;
 
     constructor(
         private carrierService: CarriersService,
@@ -34,6 +36,14 @@ export class CarrierComponent implements OnInit {
         });
     }
 
+    get isEditing() {
+        return this.editing;
+    }
+
+    get displayConfigurationForm() {
+        return this.editingConfigForm;
+    }
+
     updateCarrier(event: any) {
         const { id, payload } = event;
         this.carrierService.updateCarrier(id, payload)
@@ -47,7 +57,16 @@ export class CarrierComponent implements OnInit {
         this.editing = !this.editing;
     }
 
+    hideConfigForm() {
+        this.editingConfigForm = false;
+    }
+
     backToCarriers() {
         this.router.navigate(['../carriers']);
+    }
+
+    showConfigForm(configuration) {
+        this.chosenConfiguratoion = configuration;
+        this.editingConfigForm = true;
     }
 }

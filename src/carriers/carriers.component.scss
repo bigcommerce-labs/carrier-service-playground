@@ -13,7 +13,6 @@
     .align-items-center {
         align-items: center;
     }
-    
     .carrier {
         padding: 10px;
 
@@ -56,23 +55,5 @@
         background-color: #e9eaea;
         border-color: #e9eaea;
         color: #bdc0c0;
-    }
-}
-
-.loading {
-    background: rgba(255, 255, 255,0.4);
-    position: fixed;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 5;
-
-    b {
-        font-size: 1.5rem;
-        color: rgba(1, 1, 1, 0.54);
     }
 }

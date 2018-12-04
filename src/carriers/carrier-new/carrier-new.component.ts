@@ -32,6 +32,10 @@ export class CarrierNewComponent implements OnInit {
       });
   }
 
+  get carrierFormStatus() {
+    return this.displayCarrierForm;
+  }
+
   backToCarriers() {
     this.router.navigate(['../carriers']);
   }
@@ -42,6 +46,8 @@ export class CarrierNewComponent implements OnInit {
 
   createConfiguration(event: any) {
     this.configurationService.createConfiguration(event, this.carrierId)
-      .subscribe(res => this.backToCarriers());
+      .subscribe(res => {
+        this.backToCarriers();
+      });
   }
 }
