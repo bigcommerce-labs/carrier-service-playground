@@ -3,6 +3,12 @@
     margin: 0 auto 0;
     padding-top: 40px;
 
+    .back-button {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+    }
+
     .carrier-details {
         flex-grow: 1;
 

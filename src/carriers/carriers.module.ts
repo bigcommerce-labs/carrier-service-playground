@@ -11,7 +11,6 @@ import { SharedModule } from '../shared/shared.module';
 import { CarriersComponent } from './carriers.component';
 import { CarrierFormComponent } from './components/carrier-form/carrier-form.component';
 import { CarrierComponent } from './carrier/carrier.component';
-import { CarrierConfigurationsComponent } from './components/carrier-configurations/carrier-configurations.component';
 import { CarrierNewComponent } from './carrier-new/carrier-new.component';
 import { ConfigurationFormComponent } from './components/configuration-form/configuration-form.component';
 import { ConfigurationTableComponent } from './components/configuration-table/configuration-table.component';
@@ -33,7 +32,6 @@ export const ROUTES: Routes = [
         CarriersComponent,
         CarrierFormComponent,
         CarrierComponent,
-        CarrierConfigurationsComponent,
         CarrierNewComponent,
         ConfigurationFormComponent,
         ConfigurationTableComponent
