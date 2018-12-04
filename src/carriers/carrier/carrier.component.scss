@@ -1,0 +1,27 @@
+.carrier {
+    width: 50%;
+    margin: 0 auto 0;
+    padding-top: 40px;
+
+    .carrier-details {
+        flex-grow: 1;
+
+        .layout-column {
+            
+            &:nth-child(2n) {
+                margin-left: 4rem;
+                margin-top: 1rem;
+            }
+
+            &:first-of-type {
+                width: 85%;
+            }
+        }
+    }
+
+    .carrier-logo { 
+        height: 100px;
+        margin-top: 1rem;
+        width: 100px;
+    }
+}

@@ -1,0 +1,18 @@
+<table class="table">
+    <thead class="table-thead">
+        <th>Id</th>
+        <th>Published</th>
+        <th>Edit</th>
+    </thead>
+    <tbody class="table-tbody">
+        <tr id="row-" class="tableRow" *ngFor="let configuration of configurations">
+            <td>{{ configuration.id }}</td>
+            <td>
+              <span class="lozenge true">Yes</span>
+            </td>
+            <td>
+              <i class="material-icons edit">edit</i>
+            </td>
+        </tr>
+    </tbody>
+</table>

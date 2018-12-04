@@ -13,6 +13,11 @@ export class ConfigurationService {
         private http: HttpClient
     ) {}
 
+    getConfiguration(carrierId: number) {
+        return this.http.get(this.API_URL(carrierId))
+            .pipe(map((res) => res));
+    }
+
     createConfiguration(payload: any, id: number) {
         payload.supported_origin_countries = [payload.supported_origin_countries];
         payload.settings_schema = JSON.parse(payload.settings_schema);

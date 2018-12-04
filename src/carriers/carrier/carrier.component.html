@@ -1,10 +1,45 @@
-<div>
-    <h1>{{ carrier?.name ? 'Edit ' + carrier.name : 'Add Shipping Rate Provider' }}</h1>
 
-    <app-carrier-form
+    <!-- <h1>{{ carrier?.name ? 'Edit ' + carrier.name : 'Add Shipping Rate Provider' }}</h1> -->
+
+    <!-- <app-carrier-form
         [carrier]="carrier"
         (goBack)="backToCarriers()"
         (create)="createCarrier($event)"
         (update)="updateCarrier($event)">
-    </app-carrier-form>
+    </app-carrier-form> -->
+
+<div class="carrier layout-column">
+    <div class="layout-row carrier-details">
+        <div class="layout-column">
+            <div class="form-field">
+                <label class="form-label">Name</label>
+                <input
+                    class="form-input"
+                    type="text"
+                    [value]="carrier?.name"
+                    disabled>
+            </div>
+    
+            <div class="form-field">
+                <label class="form-label">Description</label>
+                <input
+                    class="form-input"
+                    type="text"
+                    [value]="carrier?.description"
+                    disabled>
+            </div>
+        </div>
+        <div class="layout-column">
+            <button class="button">Edit Carrier</button>
+            <img [src]="carrier?.logo_url" class="carrier-logo" alt="Carrier Logo">
+        </div>
+    </div>
+
+    <div class="configuration-table-container">
+            <h3>Carrier Configurations</h3>
+            <app-configuration-table
+                *ngIf="configurations?.length"
+                [configurations]="configurations">
+            </app-configuration-table>
+        </div>
 </div>

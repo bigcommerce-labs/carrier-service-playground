@@ -1,4 +1,5 @@
 @import './form.scss';
+@import './table.scss';
 
 /* You can add global styles to this file, and also import other style files */
 %button {
@@ -33,6 +34,11 @@ body {
 .layout-row {
     display: flex;
     flex-direction: row;
+}
+
+.layout-column {
+    display: flex;
+    flex-direction: column;
 }
 
 .flex-grow {
